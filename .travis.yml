@@ -13,7 +13,7 @@ before_install:
   - brew update && brew install llvm38 && brew install openssl && brew link --force --overwrite openssl
   - git clone https://github.com/Ultimaker/cura-build-environment.git $HOME/cura-build-environment # replace with robo3d version
   - cd $HOME/cura-build-environment
-  - ./env_osx.sh
+  - $HOME/cura-build-environment/env_osx.sh
   - mkdir build && cd build
   - cmake .. -DCMAKE_PREFIX_PATH=/opt/cura-build-environment -DCMAKE_BUILD_TYPE=Release -DINCLUDE_DEVEL=ON
   - cd ../
