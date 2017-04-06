@@ -23,7 +23,7 @@ before_script:
   - git clone https://github.com/Ultimaker/cura-build-environment.git $HOME/cura-build-environment # replace with robo3d version
   - cd $HOME/cura-build-environment
   - mkdir build && cd $HOME/cura-build-environment/build
-  - cmake .. -DCMAKE_PREFIX_PATH=/opt/cura-build-environment -DCMAKE_BUILD_TYPE=Release -DINCLUDE_DEVEL=ON
+  - cmake .. -DCMAKE_PREFIX_PATH=/opt/cura-build-environment -DCMAKE_BUILD_TYPE=Release
   - travis_wait 60 make -j6
   - cd $HOME
   - mkdir build
