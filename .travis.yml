@@ -14,7 +14,7 @@ before_install:
   - export CC=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
   - export CXX=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
   - export CFLAGS=-I/usr/local/include
-  - brew update && brew install llvm38 && brew install openssl && brew link --force --overwrite openssl
+  - brew update && brew install gcc && brew install openssl && brew link --force --overwrite openssl
 
 
 before_script:
