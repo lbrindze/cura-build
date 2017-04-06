@@ -10,11 +10,13 @@ compiler:
 
 before_install:
   # before we build cura we build all dependencies from source. At this point I was unable to find pre-built bins for osx deps, but check back with Ultimaker as they said they were working on this
+  - export MACOSX_DEPLOYMENT_TARGET=10.7
+  - export CC=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
+  - export CXX=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
+  - export CFLAGS=-I/usr/local/include
   - brew update && brew install llvm38 && brew install openssl && brew link --force --overwrite openssl
   - git clone https://github.com/Ultimaker/cura-build-environment.git $HOME/cura-build-environment # replace with robo3d version
-  - cat $HOME/cura-build-environment/env_osx.sh
   - cd $HOME/cura-build-environment
-  - bash -c '$HOME/cura-build-environment/env_osx.sh'
   - mkdir build && cd build
   - cmake .. -DCMAKE_PREFIX_PATH=/opt/cura-build-environment -DCMAKE_BUILD_TYPE=Release -DINCLUDE_DEVEL=ON
   - cd ../
