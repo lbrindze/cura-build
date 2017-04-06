@@ -15,15 +15,16 @@ before_install:
   - export CXX=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
   - export CFLAGS=-I/usr/local/include
   - brew update && brew install llvm38 && brew install openssl && brew link --force --overwrite openssl
-  - git clone https://github.com/Ultimaker/cura-build-environment.git $HOME/cura-build-environment # replace with robo3d version
-  - cd $HOME/cura-build-environment
-  - mkdir build && cd build
-  - cmake .. -DCMAKE_PREFIX_PATH=/opt/cura-build-environment -DCMAKE_BUILD_TYPE=Release -DINCLUDE_DEVEL=ON
-  - cd ../
+
 
 before_script:
   # if you want to use xcode > v8.0.0
   # - sudo ln -s /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild /Applications/Xcode.app/Contents/Developer/usr/bin/xcrun
+  - git clone https://github.com/Ultimaker/cura-build-environment.git $HOME/cura-build-environment # replace with robo3d version
+  - cd $HOME/cura-build-environment
+  - mkdir $HOME/cura-build-envrionment/build && cd $HOME/cura-build-envrionment/build
+  - cmake .. -DCMAKE_PREFIX_PATH=/opt/cura-build-environment -DCMAKE_BUILD_TYPE=Release -DINCLUDE_DEVEL=ON
+  - cd $HOME
   - mkdir build
   - cmake .. -DCMAKE_INSTALL_PREFIX=/opt/cura-build -DCMAKE_PREFIX_PATH=/opt/cura-build-environment -DCMAKE_BUILD_TYPE=Release
 
