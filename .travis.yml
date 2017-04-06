@@ -24,6 +24,8 @@ before_script:
   - cd $HOME/cura-build-environment
   - mkdir build && cd $HOME/cura-build-environment/build
   - cmake .. -DCMAKE_PREFIX_PATH=/opt/cura-build-environment -DCMAKE_BUILD_TYPE=Release -DINCLUDE_DEVEL=ON
+  # don't let travis-ci timeout
+  - while true; do sleep 590 echo "I'm not dead yet" done &
   - make -j6
   - cd $HOME
   - mkdir build
