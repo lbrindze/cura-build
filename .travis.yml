@@ -1,5 +1,9 @@
 language:
   - cpp
+  - python
+
+python:
+  - '3.5'
 
 sudo: required
 
@@ -27,7 +31,6 @@ before_script:
   # generate make file for deps
   - cmake .. -DCMAKE_PREFIX_PATH=/opt/cura-build-environment -DCMAKE_BUILD_TYPE=Release
   # individually compile deps to avoid timeout on Travis CI
-  - make python  -j4
   - make Qt -j4
   - make openssl -j4
   - make pyqt -j4
