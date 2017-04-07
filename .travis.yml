@@ -24,10 +24,17 @@ before_script:
   - git clone https://github.com/ultimaker/cura-build-environment.git $HOME/cura-build-environment # replace with robo3d version
   - cd $HOME/cura-build-environment
   - mkdir build && cd $HOME/cura-build-environment/build
+  # generate make file for deps
   - cmake .. -DCMAKE_PREFIX_PATH=/opt/cura-build-environment -DCMAKE_BUILD_TYPE=Release
-  - make Qt
-  - make python
-  - make python-utils 
+  # individually compile deps to avoid timeout on Travis CI
+  - make python  -j4
+  - make Qt -j4
+  - make openssl -j4
+  - make pyqt -j4
+  - make numpy -j4
+  - make python-six -j4
+  - make python-utils -j4
+  - make -j4
   - cd $HOME
   - mkdir build
   - cmake .. -DCMAKE_INSTALL_PREFIX=/opt/cura-build -DCMAKE_PREFIX_PATH=/opt/cura-build-environment -DCMAKE_BUILD_TYPE=Release
