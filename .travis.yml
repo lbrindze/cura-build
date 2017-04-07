@@ -1,9 +1,5 @@
 language:
   - cpp
-  - python
-
-python:
-  - '3.5'
 
 sudo: required
 
@@ -25,12 +21,13 @@ before_install:
 before_script:
   # if you want to use xcode > v8.0.0
   # - sudo ln -s /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild /Applications/Xcode.app/Contents/Developer/usr/bin/xcrun
-  - git clone https://github.com/lbrindze/cura-build-environment.git $HOME/cura-build-environment # replace with robo3d version
-  - pip install numpy scipy netifaces
+  - git clone https://github.com/ultimaker/cura-build-environment.git $HOME/cura-build-environment # replace with robo3d version
   - cd $HOME/cura-build-environment
   - mkdir build && cd $HOME/cura-build-environment/build
   - cmake .. -DCMAKE_PREFIX_PATH=/opt/cura-build-environment -DCMAKE_BUILD_TYPE=Release
-  - travis_wait make -j6
+  - make Qt
+  - make python
+  - make python-utils 
   - cd $HOME
   - mkdir build
   - cmake .. -DCMAKE_INSTALL_PREFIX=/opt/cura-build -DCMAKE_PREFIX_PATH=/opt/cura-build-environment -DCMAKE_BUILD_TYPE=Release
