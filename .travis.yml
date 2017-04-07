@@ -29,7 +29,7 @@ before_script:
   - cd $HOME/cura-build-environment
   - mkdir build && cd $HOME/cura-build-environment/build
   - cmake .. -DCMAKE_PREFIX_PATH=/opt/cura-build-environment -DCMAKE_BUILD_TYPE=Release
-  - travis_wait 60 make -j6
+  - travis_wait make -j6
   - cd $HOME
   - mkdir build
   - cmake .. -DCMAKE_INSTALL_PREFIX=/opt/cura-build -DCMAKE_PREFIX_PATH=/opt/cura-build-environment -DCMAKE_BUILD_TYPE=Release
